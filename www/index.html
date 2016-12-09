@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+     
+         <meta name="viewport" content="width=device-width,height=device-height, initial-scale=1">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <link rel="stylesheet" href="css/jquery-1.5.0.mobile.min.css">
+
+        <title>Partes y compras</title>
+    </head>
+    <body>
+        
+
+    <!-- Start of first page -->
+    <div data-role="page" id="home">
+
+        <div data-role="header">
+            <a href="#home" data-icon=home>Inicio</a>
+            <h1>Partes</h1>
+            
+        </div><!-- /header -->
+
+        <div data-role="content">   
+            <a href="#partes" id="btnPartes" data-role="button" data-icon="carat-r">Partes</a>
+            <a href="#compras" data-role="button" data-icon="carat-r">Compras</a>
+            <a href="#obras" id="btnObras" data-role="button" data-icon="carat-r">Obras</a>
+            <a href="#tareas" data-role="button" data-icon="carat-r">Tareas</a> 
+        </div><!-- /content -->
+
+        <div data-role="footer">
+            <h4 id="times"></h4>
+        </div><!-- /footer -->
+    </div><!-- /page -->
+
+
+    <!-- Partes page -->
+    <div data-role="page" id="partes">
+        <div data-role="header">
+            <a href="#home" data-icon=home>Inicio</a>
+            <h1>Lista de partes</h1>
+            <a href="#nuevoParte" data-icon="gear" id="nuevoParte">Nuevo</a>
+        </div><!-- /header -->
+        <div data-role="content">   
+            <ul data-role="listview" data-theme="d" data-divider-theme="d" class="ui-listview listaPartes" id="listaPartes"></ul>       
+        </div><!-- /content -->
+        <div data-role="footer">
+            <h4 id="times"></h4>
+        </div><!-- /footer -->
+    </div><!-- /page -->
+
+
+    <!-- Crear Partes page -->
+    <div data-role="page" id="nuevoParte">
+        <div data-role="header">
+            <a href="#home" data-icon=home>Inicio</a>
+            <h1>Lista de partes</h1>
+            <a id="btnNuevoParte" href="#nuevoParte" data-icon="gear">Nuevo</a>
+        </div><!-- /header -->
+        <div data-role="content">   
+                <label for="obra" class="select">Obra:</label>
+                <select name="obra" id="selObra" data-native-menu="false"></select>
+                <label for="selTarea" class="select">Actividad</label>
+                <select name="selTarea" id="selTarea" data-native-menu="false"></select>
+                <label for="fecha">Fecha:</label>
+                <input name="fecha" id="fecha" type="date" data-role="datebox" data-options='{"mode": "datebox"}'/>
+                <label for="horaInicio" class="select">Hora inicio:</label>
+                <select id="horaInicio" name="horaInicio" data-native-menu="false"></select>
+                <label for="horaFinal" class="select">Hora Final:</label>
+                <select id="horaFinal" data-overlay-theme name="horaFinal" data-native-menu="false"></select>
+                <label for="observaciones">Observaciones:</label>
+                <input type="text" name="observaciones" id="" value="" />
+                <button data-theme="b" id="grabar" name="grabar" class="ui-btn-hidden" aria-disabled="false">Grabar</button>
+            
+        </div><!-- /content -->
+        <div data-role="footer">
+            <h4 id="times"></h4>
+        </div><!-- /footer -->
+    </div><!-- /page -->
+
+
+    <!-- Crear Obras page -->
+    <div data-role="page" id="obras">
+        <div data-role="header">
+            <a href="#home" data-icon=home>Inicio</a>
+            <h1>Lista de Obras</h1>
+            
+        </div><!-- /header -->
+        <div data-role="content">   
+            <h2>Agregar nueva obra</h2>
+            <div data-role="controlgroup" data-type="vertical">
+                <input type="text" id="search-control-group" data-wrapper-class="controlgroup-textinput ui-btn" placeholder="Nombre de Obra">
+                <input type="text" id="search-control-group" data-wrapper-class="controlgroup-textinput ui-btn" placeholder="Nombre del Cliente">
+                <button data-wrapper-class="ui-btn  ui-group-theme-b">Grabar</button>
+                <button data-wrapper-class="ui-btn  ui-group-theme-b">Borrar</button>
+            </div>
+            <p></p><h2>Obras Actuales</h2>
+            <div>
+                <ul data-role="listview" id ="listObras">
+                    
+                </ul>   
+            </div>
+            
+        </div><!-- /content -->
+        <div data-role="footer">
+            <h4 id="times"></h4>
+        </div><!-- /footer -->
+    </div><!-- /page -->
+
+
+    <!-- Crear Obras page -->
+    <div data-role="page" id="tareas">
+        <div data-role="header">
+            <a href="#home" data-icon=home>Inicio</a>
+            <h1>Lista de tareas</h1>
+            
+        </div><!-- /header -->
+        <div data-role="content">   
+            <h2>Agregar nueva tarea</h2>
+            <div data-role="controlgroup" data-type="vertical">
+                <input type="text" id="search-control-group" data-wrapper-class="controlgroup-textinput ui-btn" placeholder="Nombre de Obra">
+                <input type="text" id="search-control-group" data-wrapper-class="controlgroup-textinput ui-btn" placeholder="Nombre del Cliente">
+                <button data-wrapper-class="ui-btn  ui-group-theme-b">Grabar</button>
+                <button data-wrapper-class="ui-btn  ui-group-theme-b">Borrar</button>
+            </div>
+            <p></p><h2>Tareas Actuales</h2>
+            <div>
+                <ul data-role="listview" id ="listObras">
+                    
+                </ul>   
+            </div>
+            
+        </div><!-- /content -->
+        <div data-role="footer">
+            <h4 id="times"></h4>
+        </div><!-- /footer -->
+    </div><!-- /page -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <script type="text/javascript" src="cordova.js"></script>
+        <script src="js/jquery-1.11.1.min.js"></script>
+        <script src="js/jquery-1.5.0.mobile.min.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+    </body>
+</html>
